@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://leiyi420.github.io/HierarchicalEmoTTS/ -->
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+  <title>MULTI-SPEAKER EXPRESSIVE SPEECH SYNTHESIS</title>
+  <meta name="generator" content="Jekyll v3.9.0">
+  <meta property="og:title" content="TODO: title">
+  <meta property="og:locale" content="en_US">
+  <link rel="canonical" href="https://leiyi420.github.io/CSEmoTransfer">
+  <meta property="og:url" content="https://leiyi420.github.io/CSEmoTransfer">
+  <meta name="twitter:card" content="summary">
+  <!-- End Jekyll SEO tag -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
+  <section class="page-header">
+    <!-- <h1 class="project-name">Demo PAGE</h1> -->
+    <!-- <h2 class="project-tagline"></h2> -->
+
+
+  </section>
+
+  <section class="main-content">
+    <h1 id="">
+      <center>Multi-Speaker Expressive Speech Synthesis 2 via Contrastive Speech Representation Learning</center>
+    </h1>
+
+    <center> Xinfa Zhu, Yuke Li, Yi Lei, Ning Jiang, Guoqing Zhao, Lei Xie </center>
+    <center> Northwestern Polytechnical University </center>
+    <!-- <center> Tencent AI Lab </center> -->
+
+    <h2>0. Contents</h2>
+    <ol>
+      <li><a href="#abstract">Abstract</a></li>
+      <!-- <li><a href="#transfer">Examples of information perturbation</a></li> -->
+      <li><a href="#prediction">Demos -- expressive speech with a specific style and emotion for Multi-lingual target
+          speakers</a></li>
+      </li>
+
+    </ol>
+
+    <br><br>
+    <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
+    <p> This paper focuses on expressive speech synthesis, providing the target speaker with multi-style and multi-emotion speech. 
+      We propose a novel contrastive learning-based TTS approach to transfer style and emotion across speakers by extracting the desired attribute representations. Furthermore, the proposed contrastive learning-based TTS framework introduces a semi-supervised training strategy to leverage multi-domain data. Moreover, speech slices are utilized to construct the positive samples to prevent the system from over-fitting on the contextual content of speech when extracting attribute representations.
+      We integrate the learned representations into an improved VITS model, achieving expressive speech synthesis.
+      Extensive experiments demonstrate the good design of our model.
+    </p>
+    <center><img src='fig/architecture_00.png'></center>
+    <br><br>
+
+
+    <h2>2. Demos -- expressive speech with a specific style and emotion for Chinese target speakers<a
+        name="prediction"></a></h2>
+    <h3>Convert the emotion and style expresssions from different source speakers to the neutral target speakers without
+      emotional and stylistic training data.</h3>
+
+    <p><b>Chinese speaker: F1 </b></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><strong>Emotion</strong></th>
+          <th style="text-align: center"><strong>Target style example</strong></th>
+          <th style="text-align: center"><strong>Target emotion example</strong></th>
+          <th style="text-align: center"><strong>Target speaker example</strong></th>
+          <th style="text-align: center"><strong>TSEW</strong></th>
+          <th style="text-align: center"><strong>CGCLONE</strong></th>
+          <th style="text-align: center"><strong>Proposed</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Happy</td>
+          <td style="text-align: left" colspan=6>Text: 长风破浪会有时，直挂云帆济沧海。(English: Someday, with my sail piercing the
+            clouds; I will mount the wind, break the waves, and traverse the vast, rolling sea.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0102001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4017.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn17_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn17_02_13.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn17_02_13.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Sad</td>
+          <td style="text-align: left" colspan=6>Text: 君不见，高堂明镜悲白发，朝如青丝暮成雪。(English: Don't you see? sadly, the high hall
+            mirror saw white hair, as black as green hair in the morning and as white as snow in the evening.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0102001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4018.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn18_02_10.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn18_02_10.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn18_02_10.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Angry</td>
+          <td style="text-align: left" colspan=6>Text: 天生我材必有用，千金散尽还复来。(English: Heaven has made us talents, we're not
+            made in vain. A thousand gold coins spent, more will turn up again.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0102001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4014.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn14_02_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn14_02_11.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn14_02_11.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Surprise</td>
+          <td style="text-align: left" colspan=6>Text: 从此山河两相阅，缠尽青山尝清河。(English: From then on, the mountains and rivers
+            read each other and wrapped around the green mountains to taste the Qinghe River.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0102001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4019.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn19_02_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn19_02_17.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn19_02_17.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Fear</td>
+          <td style="text-align: left" colspan=6>Text: 山不厌高，海不厌深。周公吐哺，天下归心。(English: The water can never be too deep,
+            and the mountain too high. The Duke of Zhou spits and feeds, and the world returns to the heart.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0102001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4016.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn16_02_9.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn16_02_9.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn16_02_9.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Neutral</td>
+          <td style="text-align: left" colspan=6>Text: 文章本天成，妙手偶得之。(English: The essence of writing is inherently divine,
+            skillful hands occasionally chance upon it.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0102001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4020.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn20_02_7.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn20_02_7.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn20_02_7.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Happy</td>
+          <td style="text-align: left" colspan=6>Text: 不久以后，王后果然生下了一个可爱的小公主。(English: Before long, the queen gave birth
+            to a lovely little princess.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0103001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4017.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn17_03_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn17_03_11.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn17_03_11.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Sad</td>
+          <td style="text-align: left" colspan=6>Text: 她对恶魔说，求求你，千万不要伤害公主，我什么都可以给你。(English: She said to the devil,
+            Please, don't hurt the princess. I can give you anything.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0103001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4018.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn18_03_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn18_03_5.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn18_03_5.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Angry</td>
+          <td style="text-align: left" colspan=6>Text: 给我杀了她！把她的心和舌头都带回来，做为你杀死她的证据。(English: Kill her! Bring back her
+            heart and tongue as proof that you killed her.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0103001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4014.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn14_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn14_03_16.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn14_03_16.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Surprise</td>
+          <td style="text-align: left" colspan=6>Text: 进入小木屋后，里面竟然整齐排列着七张小小的床。(English: After entering the cabin, there
+            were seven small beds neatly arranged inside.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0103001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4019.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn19_03_19.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn19_03_19.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn19_03_19.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Fear</td>
+          <td style="text-align: left" colspan=6>Text: 听到猫头鹰叫声的白雪公主，越走越觉得森林好可怕。(English: Snow White, who heard the cry
+            of an owl, felt more and more terrible in the forest as she walked.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0103001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4016.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn16_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn16_03_17.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn16_03_17.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Neutral</td>
+          <td style="text-align: left" colspan=6>Text: 春光明媚，碧波荡漾，王后带着公主在湖边愉快地玩耍。(English: The spring is bright and beautiful, with rippling azure waves. 
+            The queen, accompanied by the princess, joyfully plays by the lakeside.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0103001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4020.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn20_03_1.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn20_03_1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn20_03_1.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>English + Happy</td>
+          <td style="text-align: left" colspan=6>Text: I'll build a house out of candy and gingerbread!</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/ref-hisi.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4017.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn17_03en_9.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn17_03en_9.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn17_03en_9.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>English + Sad</td>
+          <td style="text-align: left" colspan=6>Text: Hope is the thing with feathers that perches in the soul.</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/ref-hisi.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4018.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn18_02en_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn18_02en_5.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn18_02en_5.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Englsih + Angry</td>
+          <td style="text-align: left" colspan=6>Text: Never give up, Never lose hope.</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/ref-hisi.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4014.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn14_02en_1.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn14_02en_1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn14_02en_1.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>English + Surprise</td>
+          <td style="text-align: left" colspan=6>Text: The fairytale is over now, the happy ending we must make.</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/ref-hisi.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4019.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn19_03en_6.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn19_03en_6.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn19_03en_6.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>English + Fear</td>
+          <td style="text-align: left" colspan=6>Text: I can't go back to yesterday because I was a different person then.</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/ref-hisi.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4016.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn16_03en_7.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn16_03en_7.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn16_03en_7.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>English + Neutral</td>
+          <td style="text-align: left" colspan=6>Text: To be or not to be, that is the question.</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/ref-hisi.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4020.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk44.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/cn20_02en_2.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/cn20_02en_2.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/cn20_02en_2.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+
+    <!-- <p><b>Short summary:</b> When the target neutral speaker is male, the FS2-GST and FS2-VAE cannot produce correct
+      timbre, although the genereted speech is emotional. Besides, FS2-BN sometimes also cannot generate male voice. The
+      proposed model could successfully maintain the target timbre when generating emotional speech.</p> -->
+
+    <p><b>English speaker: M1 </b></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><strong>Emotion</strong></th>
+          <th style="text-align: center"><strong>Target style example</strong></th>
+          <th style="text-align: center"><strong>Target emotion example</strong></th>
+          <th style="text-align: center"><strong>Target speaker example</strong></th>
+          <th style="text-align: center"><strong>TSEW</strong></th>
+          <th style="text-align: center"><strong>CGCLONE</strong></th>
+          <th style="text-align: center"><strong>Proposed</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Happy</td>
+          <td style="text-align: left" colspan=6>Text: 长风破浪会有时，直挂云帆济沧海。(English: Someday, with my sail piercing the
+            clouds; I will mount the wind, break the waves, and traverse the vast, rolling sea.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0102001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4017.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2717_02_13.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2717_02_13.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2717_02_13.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Sad</td>
+          <td style="text-align: left" colspan=6>Text: 君不见，高堂明镜悲白发，朝如青丝暮成雪。(English: Don't you see? sadly, the high hall
+            mirror saw white hair, as black as green hair in the morning and as white as snow in the evening.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0102001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4018.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2718_02_10.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2718_02_10.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2718_02_10.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Angry</td>
+          <td style="text-align: left" colspan=6>Text: 天生我材必有用，千金散尽还复来。(English: Heaven has made us talents, we're not
+            made in vain. A thousand gold coins spent, more will turn up again.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0102001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4014.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2714_02_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2714_02_11.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2714_02_11.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Surprise</td>
+          <td style="text-align: left" colspan=6>Text: 从此山河两相阅，缠尽青山尝清河。(English: From then on, the mountains and rivers
+            read each other and wrapped around the green mountains to taste the Qinghe River.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0102001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4019.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2719_02_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2719_02_17.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2719_02_17.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Fear</td>
+          <td style="text-align: left" colspan=6>Text: 山不厌高，海不厌深。周公吐哺，天下归心。(English: The water can never be too deep,
+            and the mountain too high. The Duke of Zhou spits and feeds, and the world returns to the heart.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0102001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4016.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2716_02_9.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2716_02_9.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2716_02_9.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Poet + Neutral</td>
+          <td style="text-align: left" colspan=6>Text: 文章本天成，妙手偶得之。(English: The essence of writing is inherently divine,
+            skillful hands occasionally chance upon it.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0102001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4020.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2720_02_7.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2720_02_7.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2720_02_7.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Happy</td>
+          <td style="text-align: left" colspan=6>Text: 不久以后，王后果然生下了一个可爱的小公主。(English: Before long, the queen gave birth
+            to a lovely little princess.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0103001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4017.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2717_03_11.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2717_03_11.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2717_03_11.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Sad</td>
+          <td style="text-align: left" colspan=6>Text: 她对恶魔说，求求你，千万不要伤害公主，我什么都可以给你。(English: She said to the devil,
+            Please, don't hurt the princess. I can give you anything.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0103001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4018.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2718_03_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2718_03_5.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2718_03_5.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Angry</td>
+          <td style="text-align: left" colspan=6>Text: 给我杀了她！把她的心和舌头都带回来，做为你杀死她的证据。(English: Kill her! Bring back her
+            heart and tongue as proof that you killed her.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0103001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4014.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2714_03_16.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2714_03_16.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2714_03_16.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Surprise</td>
+          <td style="text-align: left" colspan=6>Text: 进入小木屋后，里面竟然整齐排列着七张小小的床。(English: After entering the cabin, there
+            were seven small beds neatly arranged inside.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0103001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4019.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2719_03_19.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2719_03_19.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2719_03_19.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Fear</td>
+          <td style="text-align: left" colspan=6>Text: 听到猫头鹰叫声的白雪公主，越走越觉得森林好可怕。(English: Snow White, who heard the cry
+            of an owl, felt more and more terrible in the forest as she walked.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0103001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4016.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2716_03_17.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2716_03_17.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2716_03_17.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>Fairytales + Neutral</td>
+          <td style="text-align: left" colspan=6>Text: 春光明媚，碧波荡漾，王后带着公主在湖边愉快地玩耍。(English: The spring is bright and beautiful, with rippling azure waves. 
+            The queen, accompanied by the princess, joyfully plays by the lakeside.)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/0103001001.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4020.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2720_03_1.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2720_03_1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2720_03_1.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>English + Happy</td>
+          <td style="text-align: left" colspan=6>Text: I'll build a house out of candy and gingerbread!</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/ref-hisi.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4017.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2717_03en_9.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2717_03en_9.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2717_03en_9.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>English + Sad</td>
+          <td style="text-align: left" colspan=6>Text: Hope is the thing with feathers that perches in the soul.</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/ref-hisi.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4018.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2718_02en_5.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2718_02en_5.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2718_02en_5.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>English + Angry</td>
+          <td style="text-align: left" colspan=6>Text: Never give up, Never lose hope.</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/ref-hisi.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4014.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2714_02en_1.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2714_02en_1.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2714_02en_1.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>English + Surprise</td>
+          <td style="text-align: left" colspan=6>Text: The fairytale is over now, the happy ending we must make.</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/ref-hisi.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4019.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2719_03en_6.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2719_03en_6.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2719_03en_6.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>English + Fear</td>
+          <td style="text-align: left" colspan=6>Text: I can't go back to yesterday because I was a different person then.</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/ref-hisi.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4016.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2716_03en_7.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2716_03en_7.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2716_03en_7.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; word-break: keep-all; white-space: nowrap;" rowspan=2>English + Neutral</td>
+          <td style="text-align: left" colspan=6>Text: To be or not to be, that is the question.</td>
+        </tr>
+        <tr>
+          <td style="text-align: left"><audio src="subjective/ref_style/ref-hisi.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_emotion/4020.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/ref_speaker/spk27.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/TSEW/2720_02en_2.wav" controls="" preload=""></audio>
+          </td>
+          <td style="text-align: left"><audio src="subjective/CGCLONE/2720_02en_2.wav" controls="" preload=""></audio></td>
+          <td style="text-align: left"><audio src="subjective/Proposed/2720_02en_2.wav" controls="" preload=""></audio>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    <!-- <p><b>Short summary:</b> The results indicate the effectiveness of our proposed method can successfully transfer the
+      source emotion to the target speaker while maintaining the target speaker's timbre.</p> -->
+
+    <br><br>
+    
+
+
+
+    <footer class="site-footer">
+
+      <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub
+          Pages</a>.</span>
+    </footer>
+  </section>
+</body>
+
+</html>
