@@ -48,10 +48,8 @@
 
     <br><br>
     <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
-    <p> This paper focuses on expressive speech synthesis, providing the target speaker with multi-style and multi-emotion speech. 
-      We propose a novel contrastive learning-based TTS approach to transfer style and emotion across speakers by extracting the desired attribute representations. Furthermore, the proposed contrastive learning-based TTS framework introduces a semi-supervised training strategy to leverage multi-domain data. Moreover, speech slices are utilized to construct the positive samples to prevent the system from over-fitting on the contextual content of speech when extracting attribute representations.
-      We integrate the learned representations into an improved VITS model, achieving expressive speech synthesis.
-      Extensive experiments demonstrate the good design of our model.
+    <p> This paper aims to build an expressive TTS system for multi-speakers, synthesizing a target speaker's speech with multiple styles and emotions.
+To this end, we propose a novel <i>contrastive learning</i>-based TTS approach to transfer style and emotion across speakers. Specifically, we construct positive-negative sample pairs at both <i>utterance</i> and <i>category</i> (such as emotion-happy or style-poet or speaker A) levels and leverage contrastive learning to better extract disentangled style, emotion, and speaker representations from speech. Furthermore, we introduce a semi-supervised training strategy to the proposed approach to effectively leverage multi-domain data, including style-labeled data, emotion-labeled data, and unlabeled data. We integrate the learned representations into an improved VITS model, enabling it to synthesize expressive speech with diverse styles and emotions for a target speaker. Experiments on multi-domain data demonstrate the good design of our model.
     </p>
     <center><img src='fig/srl.jpg' width="50%"><img src='fig/proposed.jpg' width="50%"></center>
     <br><br>
