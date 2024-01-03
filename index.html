@@ -29,7 +29,7 @@
 
   <section class="main-content">
     <h1 id="">
-      <center>Multi-Speaker Expressive Speech Synthesis via Semi-supervised Contrastive Learning</center>
+      <center>Boosting Multi-Speaker Expressive Speech Synthesis with Semi-supervised Contrastive Learning</center>
     </h1>
 
 
@@ -45,8 +45,8 @@
 
     <br><br>
     <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
-    <p> This paper aims to build an expressive TTS system for multi-speakers, synthesizing a target speaker's speech with multiple styles and emotions.
-To this end, we propose a novel <i>contrastive learning</i>-based TTS approach to transfer style and emotion across speakers. Specifically, we construct positive-negative sample pairs at both <i>utterance</i> and <i>category</i> (such as emotion-happy or style-poet or speaker A) levels and leverage contrastive learning to better extract disentangled style, emotion, and speaker representations from speech. Furthermore, we introduce a semi-supervised training strategy to the proposed approach to effectively leverage multi-domain data, including style-labeled data, emotion-labeled data, and unlabeled data. We integrate the learned representations into an improved VITS model, enabling it to synthesize expressive speech with diverse styles and emotions for a target speaker. Experiments on multi-domain data demonstrate the good design of our model.
+    <p> This paper aims to build a Mutli-speaker, Multi-emotion, Multi-style, Multilingual (M4) TTS. We address this challenging task with a <i>semi-supervised contrastive learning</i>-based TTS framework. To effectively capture and disentangle speaker, style and emotion representations, contrastive learning from different levels, i.e. <i>utterance</i> and <i>category</i> level, is leveraged to extract the desired representations from speech. Furthermore, a semi-supervised training strategy is introduced to improve the data utilization efficiency by involving multi-domain data, including style-labeled data, emotion-labeled data, and abundant unlabeled data.
+To achieve expressive speech with diverse styles and emotions for a target speaker, the learned disentangled representations are integrated into an improved VITS model. Experiments on monolingual and multilingual corpora demonstrate the effectiveness of the proposed method. 
     </p>
     <center><img src='fig/srl.jpg' width="50%"><img src='fig/proposed.jpg' width="50%"></center>
     <br><br>
